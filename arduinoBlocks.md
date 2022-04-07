@@ -7,28 +7,66 @@
 
 ## Electrónica
 
+Trabajaremos con bajo voltaje, 5V lo que hace que todos los montajes carezcan de riesgo.
+
+Vamos a hacer un circuito sencillo para encender un led con una fuente de alimentación que podrían ser unas pilas pero que en nuestro caso usaremos los 5V (voltios) de arduino.
+
+Como los leds funcionan a unos 3V necesitamos poner una resistencia en serie con el led para que consuma los 2V de sobre ( 3V gasta el led + 2V la resistencia suman los 5V que proporciona Arduino). Podemos medir estos voltajes con un voltímetro/multímetro. 
+
+Este sería el esquema eléctrico, donde hemos puesto el cable rojo en la parte de alimentación de los 5V y el negro en la de tierra o GND (Ground)
+
 ![](./images/Led_esquematico.png)
 
-### Placa prototipo
-
-
-
-![led placa](./images/Led_bb.png)
-
-![¿cómo funciona una placa prototipo?](./images/breadboard1.gif)
+No es necesario usar cables de unos colores determinados, pero ayuda a identificar errores y hacer los montajes más sistemáticos.
 
 
 ## ¿Qué es un led?
 
 ![detalle led](./images/300px-LED.png)
 
+Un led es un dispositivo electrónico que produce luz de una determinado color (también influye el encapsulado plástico) y que tiene una determinada polaridad, es decir, tenemos que conectar determinada patilla al lado positivo (ánodo) y el otro al negativo (cátodo). Normalmente los led suelen tener la patilla negativa más larga, además de tener el lado negativo más alisado
+
+Si miras de cerca el led puedes ver las diferentes partes internas. 
+
+### Placa prototipo
+
+La placa de prototipo es como una regleta de conexiones que nos permite conectar los diferentes componentes
+
+![¿cómo funciona una placa prototipo?](./images/breadboard1.gif)
+
+Suelen tener unas bandas laterales donde se conecta la alimentación: el positivo a la banda marcada de color rojo y la negativa a la azul o negra.
+
+En las dos partes centrales, los agujeros están conectados de 5 en 5 siguiendo las filas, como se ve en la imagen.
+
+Según lo que hemos visto, podemos implementar el circuito anterior de la siguiente forma:
+
+![led placa](./images/Led_bb.png)
+
+Existen muchas formas alternativas.
 
 ## Interruptor
 
+Vamos a insertar ahora un pulsador/interruptor en el circuito, equivalente a cortar el cable de alimentación y poner un pulsador entre los dos elementos:
+
 ![](./images/Led_switch_esquematico.png)
+
+En la placa de prototipo pondremos el pulsador sobre la separación y conectaremos el cable como vemos.
 
 ![](./images/Led_switch_bb.png)
 
+Ya tenemos un sistema de encendido/apagado de una luz, como el que tenemos en las casas para encender las lámparas.
+
+## Resistencia variable / potenciómetro
+
+Ahora vamos a controlar la potencia que llegue al led, para lo que usamores una resistencia variable o potenciómetro que colocaremos entre la alimentación y el pulsador. Al ajustar el potenciómetro conseguiremos que cambie el brillo del led.
+
+![](./images/Led_switchPot_esquematico.png)
+
+La implementación en la placa de prototipo puede ser así:
+
+![](./images/Led_switchPot_bb.png)
+
+Este es el sistema de control de brillo que tienen algunas lámparas.
 
 ### ¿Qué es Arduino?
 
@@ -109,6 +147,10 @@ Arduino es un microcontrolador (microordenador que controla cosas) de diseño ab
 
 
 ### Herramientas de programación: [ArduinoBlocks.com](http://www.arduinoblocks.com)
+
+Instalamos ArduinoBlock Connector
+
+Creamos nuestra cuenta
 
 ![arduinoblocks](https://lh3.googleusercontent.com/JvIaf64ZFVdXHSF6tvCxkPl3kjybaag_u1RDn-8CgjplLbYxrwo2MR7JCBdbsqnKGVuMNSAM-GAxKpiojjHvv9ZNW2-6tEDv16wKzTXCKfoY9kvXZFamGB0Zb9Gt4RYltr_-nSvytXmPEIDduMtPbBd6QH5PqOiCRZA3LeonLbH0DS1UsztQQJVTFJFsY_bR4dsEsscbkRBNsUdn6dFaYgSL0zXf-__Wj2HDx2cnL5s4P7G-qZQ9H6-HmSbkrMrDDOYVNt-FSuPB2Jfs1XYlyRLMW6kLbN2Sv15VrMQjFoQxK8_2qkEiP88E6t29Mm-CDBcczdCuH-2nKIbnS5Mte3jV8svZ6G6W1foSyofot0ttTuLeNgf74j3TJt05Nn71e0KrYrIA2IMtWCAtRlwgaBRrt2Y2q9VF-EFYtX3oUGSCNfvJL-i-bWHkQ64YLVUM706Hx0xDWell7Qs7hXqC8jy3JdVIpHimXaY4o4QVN3bBpPzxbmOBcLyULChMHNKpIw_JbevgXoajtwtRNKDl6R39yGaBoEyAQgrvsF8L55iLGz0t01a82xkMbcDfQALVzNT3VIOkda74eP6gwRXSFTRJlBBM3bwqGpQvwyyUoSZ3a13mbYwhb044MFw-rmxwqfX2W_gLjd6Os44R7l3cdQtdmq-ekpBAzuHgEnIpT0-iiIcNwLpyub-BdyIHLWSrbamwe14mQpvg-s_78w=w373-h348-no)
 
