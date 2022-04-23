@@ -97,6 +97,7 @@ Este es el sistema de control de brillo que tienen algunas lámparas.
 ![200px-Open-source-hardware-logo.svg.png](./images/200px-Open-source-hardware-logo.svg.png)
 
 ### Se creó en [2005](https://es.wikipedia.org/wiki/Arduino) 
+
 ### Desde entonces no ha parado de 
 * evolucionar, 
 * mejorar, 
