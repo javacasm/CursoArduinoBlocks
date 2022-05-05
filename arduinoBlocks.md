@@ -245,6 +245,10 @@ Piensa en qué cambia si lo pones antes o después del incremento de la variable
 
 * * *
 # Led RGB
+
+
+![](./images/Colores-MezclaRGB.jpeg)
+
 ## 3 leds (Red,Green,Blue) con una de las patillas común
 
 ## Negativo (Cátodo) Común
