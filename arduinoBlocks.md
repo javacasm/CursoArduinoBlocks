@@ -181,19 +181,138 @@ Empezaremos seleccionando el tipo de placa Arduino que vamos a usar y a continua
 
 ![¿cómo funciona una placa prototipo?](./images/breadboard1.gif)
 
-#### Ejercicio: Cambiar el pin utilizado al pin 7
+
 
 #### Regulando la velocidad de parpadeo
 
-#### Regulando el brillo
+
 
 ![](./images/Led3_regulableUno_bb.png)
+
+
+![](./images/parpadeo_regulable.png)
+
+#### Regulando el brillo
+
+![](./images/brillo_regulable.png)
 
 * * *
 
 ### Esquema eléctrico
 
 ![led externo](./images/ExampleCircuit_sch.png)
+
+
+* * *
+# Escritura de valores analógicos
+
+## Usando técnicas como PWM podemos simular valores intermedios: 0 - 255
+### (sólo en algunos pines ~ )
+
+## Como vamos a hacer que cambie de valor usaremos una variable
+
+![dimmer](./images/montajeLedAnalogico.png)
+
+![analogWrite](./images/ProgramaLedAnalogico.png)
+
+### Si vemos el código
+
+	void setup()						// configuracion
+	{
+	  pinMode(11,OUTPUT);				// Usaremos la patilla 11 como salida
+
+	}
+
+	void loop()
+	{
+	  int contador=0;				// la variable valorSalida empieza en 0
+	  while (contador <= 255) {		// Haremos el bucle hasta que lleguemos a 256
+	    analogWrite(11,contador);		// pasamos el valor a la patilla 11
+	    delay(100);						// Esperamos 0,1 segundos
+	   }
+
+	}
+
+## Vamos a hacer ahora una subida y luego la bajada
+
+![ledupdown](./images/AnalogicoUpDown.png)
+
+Es importante el dar un valor válido a la variable contador hasta de empezar a bajar
+
+Ejercicio:Añade una línea para que veas el valor desde el PC.
+
+Piensa en qué cambia si lo pones antes o después del incremento de la variable
+
+* * *
+# Led RGB
+## 3 leds (Red,Green,Blue) con una de las patillas común
+
+## Negativo (Cátodo) Común
+
+
+![](./images/LedRGB_bb.png)
+
+![LedRGBNcomun](./images/LedRGBNComun.png)
+
+
+![](./images/led_RGB_2_bb.png)
+
+## Positivo (Ánodo) Común
+
+![LedRGBPcomun](./images/LedRGBPcomun.jpg)
+
+
+## Tiras de leds: Necesitamos más potencia por lo que usaremos un transistor como amplificador.
+
+### El montaje es sencillo
+
+![ledstripbjt](./images/ledstripbjt.gif)
+
+
+[Introducción a la electrónica](http://www.slideshare.net/javacasm/40-introduccin-a-la-electrnica)
+
+Un simple transistor Mosfet nos permite controlar grandes potencias
+
+TODO!!!
+
+
+#### Ejercicios: Combinando colores
+
+Vamos a hacer combinaciones de colores.
+Definiremos funciones con distintos colores y haremos una secuencia de colores. Cada función llamar
+Es muy importante que seamos claros con los nombres de las variables para así no equivocarnos
+
+* * *
+# Potenciómetro regulando una salida analógica
+
+![lecturaAnalogica](./images/arduino_pot_led.png)
+
+
+### El código:
+
+	void setup()
+	{
+	  pinMode(5,OUTPUT);
+	}
+
+
+	void loop()
+	{
+	  int valorPotenciometro=analogRead(0);				 	// Leemos el valor
+	  int ValorSalida=map(valorPotenciometro,0,1023,0,255);	// Convertimos al rango de salida
+	  analogWrite(5,ValorSalida);							// Escribimos el valor en la salida
+	}
+
+### Ejercicio: usar 3 potenciómetros para controlar los colores de un led RGB
+
+El montaje sería:
+
+![3PotRGB](./images/3Pot-RGB.png)
+
+Y el programa
+
+![3PotRGB](./images/3Pot-RGB-prog.png)
+
 
 * * *
 
@@ -384,108 +503,6 @@ Conjunto de instrucciones que empaquetamos en un bloque y que podemos llamar des
 Podemos llamar a una función desde cualquier parte de nuestro código.
 
 
-* * *
-# Escritura de valores analógicos
-
-## Usando técnicas como PWM podemos simular valores intermedios: 0 - 255
-### (sólo en algunos pines ~ )
-
-## Como vamos a hacer que cambie de valor usaremos una variable
-
-![dimmer](./images/montajeLedAnalogico.png)
-
-![analogWrite](./images/ProgramaLedAnalogico.png)
-
-### Si vemos el código
-
-	void setup()						// configuracion
-	{
-	  pinMode(11,OUTPUT);				// Usaremos la patilla 11 como salida
-
-	}
-
-	void loop()
-	{
-	  int contador=0;				// la variable valorSalida empieza en 0
-	  while (contador <= 255) {		// Haremos el bucle hasta que lleguemos a 256
-	    analogWrite(11,contador);		// pasamos el valor a la patilla 11
-	    delay(100);						// Esperamos 0,1 segundos
-	   }
-
-	}
-
-## Vamos a hacer ahora una subida y luego la bajada
-
-![ledupdown](./images/AnalogicoUpDown.png)
-
-Es importante el dar un valor válido a la variable contador hasta de empezar a bajar
-
-Ejercicio:Añade una línea para que veas el valor desde el PC.
-
-Piensa en qué cambia si lo pones antes o después del incremento de la variable
-
-* * *
-# Led RGB
-## 3 leds (Red,Green,Blue) con una de las patillas común
-
-## Positivo (Ánodo) Común
-
-![LedRGBPcomun](./images/LedRGBPcomun.jpg)
-
-## Negativo (Cátodo) Común
-
-![LedRGBNcomun](./images/LedRGBNComun.png)
-
-## Tiras de leds: Necesitamos más potencia por lo que usaremos un transistor como amplificador.
-
-### El montaje es sencillo
-
-![ledstripbjt](./images/ledstripbjt.gif)
-
-
-[Introducción a la electrónica](http://www.slideshare.net/javacasm/40-introduccin-a-la-electrnica)
-
-Un simple transistor Mosfet nos permite controlar grandes potencias
-
-TODO!!!
-
-
-#### Ejercicios: Combinando colores
-
-Vamos a hacer combinaciones de colores.
-Definiremos funciones con distintos colores y haremos una secuencia de colores. Cada función llamar
-Es muy importante que seamos claros con los nombres de las variables para así no equivocarnos
-
-* * *
-# Potenciómetro regulando una salida analógica
-
-![lecturaAnalogica](./images/arduino_pot_led.png)
-
-
-### El código:
-
-	void setup()
-	{
-	  pinMode(5,OUTPUT);
-	}
-
-
-	void loop()
-	{
-	  int valorPotenciometro=analogRead(0);				 	// Leemos el valor
-	  int ValorSalida=map(valorPotenciometro,0,1023,0,255);	// Convertimos al rango de salida
-	  analogWrite(5,ValorSalida);							// Escribimos el valor en la salida
-	}
-
-### Ejercicio: usar 3 potenciómetros para controlar los colores de un led RGB
-
-El montaje sería:
-
-![3PotRGB](./images/3Pot-RGB.png)
-
-Y el programa
-
-![3PotRGB](./images/3Pot-RGB-prog.png)
 
 # Motores
 
